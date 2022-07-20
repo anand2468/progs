@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block body %}
+welcome ur name is {{name_of_user}}
+{% for user in users %}
+<a href="#">{{user[0]}}</a>
+{% endfor %}
+<div>
+    <form action="/logout" method="post">
+    <button type="submit">logout</button></form>
+</div>
+{% endblock body %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form action="/signup" method="post">
+        <p>welcome enter your name</p>
+        {% if msg %} <p class="alert"> {{msg}} </p> {% endif %}
+        <input type="text" name="name" class="txtinput"placeholder="username">
+        <input type="password" name="password"class="txtinput" placeholder="password">
+        <p>already have an account <a href="/login" >log in</a><br>
+        <input type="submit" value="sign up"class="btn"></p>
+    </form>
+{% endblock body %}
