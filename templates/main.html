@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my new web</title>
+    <title>talk 2 ppl</title>
+    <link rel="stylesheet" href="static/style2.css">
 </head>
+
 <body>
+    <header>
+        <img src="static/logo.jpg" alt="talk 2 ppl" height="88px">
+        <div class="profile">
+            <img src="static/profile.jpg" alt="profile pic" height="60px" style="border-radius: 40px;">
+            <p style="margin: 0%;">
+                {{name_of_user}}
+            </p>
+        </div>
+    </header>
     {% block body %}
     {% endblock body %}
 </body>
+
 </html>
