@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% block body %}
-    <form action="/login" method="post">
-        <p>welcome back</p>
-        {% if msg %} <p class="alert"> {{msg}} </p> {% endif %}
-        <input type="text" name="name" placeholder="username" {% if value %} value="{{value}}" {%endif%}
-        class="txtinput">
-        <input type="password" name="password" placeholder="password" 
-        class="txtinput">
-        <div>new user <a href="/signup" >sign up</a> <input class="btn" type="submit" value="login"></div>
-    </form>
+<form action="/login" method="post" id="log">
+    <p>welcome back</p>
+    {% if msg %} <p class="alert"> {{msg}} </p> {% endif %}
+    <input type="text" name="name" placeholder="username" {% if value %} value="{{value}}" {%endif%} class="txtinput">
+    <input type="password" name="password" placeholder="password" class="txtinput">
+    <div>new user <a href="/signup">sign up</a> <input class="btn" type="submit" value="login"></div>
+</form>
 {% endblock body %}
