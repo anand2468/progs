@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-from comands import check_user, onl_users, create_usr,chatt
+from comands import check_user, onl_users, create_usr
 
 app=Flask(__name__)
 app.secret_key = 'YouWillNeverGuess'
@@ -63,8 +63,8 @@ def homepg():
     if session:
         return render_template('hmpg.html', 
         name_of_user = session['user'],
-        users = onl_users()
-        #users = chatt())#change
+        users = onl_users())
+        #users = chatt()#change
     else:
         return render_template('signup.html')
 
