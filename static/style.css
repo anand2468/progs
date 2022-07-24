@@ -16,7 +16,7 @@ div h1{
 
 p.alert{
     margin: 0px;
-    color: red;
+    color: #e62e2e;
     text-align: left;
     font-size: small;
 }
@@ -38,7 +38,7 @@ input{
     width: 100px;
 }
 .topnav{
-    background-color: yellowgreen;
+    background-color: skyblue;
     width: 100%;
     height: 0.5in;
     color: white;
@@ -57,14 +57,10 @@ input{
     background-color: white;
 }
 .btn:hover{
-    background-color: chartreuse;
+    background-color: skyblue;
     transform: 2s ease;
     border-color: white;
 }
 a{
     text-decoration: none;
-}
-footer{
-    border-top: rgb(156, 151, 151) 2px solid;
-    font-size:small ;
 }
