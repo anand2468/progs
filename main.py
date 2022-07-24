@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-import mysql.connector
-
-from comands import check_user, onl_users, create_usr
+from comands import check_user, onl_users, create_usr,chatt
 
 app=Flask(__name__)
 app.secret_key = 'YouWillNeverGuess'
@@ -9,8 +7,7 @@ app.secret_key = 'YouWillNeverGuess'
 @app.route('/login', methods=['post','get'])
 def login():
     #if method = post
-    if request.form :
-        msg = ''
+    if request.method == 'POST' :
         #checking user
         res = check_user(request)
         #if the account dosent match
@@ -24,6 +21,7 @@ def login():
                 usr = res[0][0]
                 session['logedin']= True
                 session['user']=str(res[0][0])
+                #session['id']=str(res[0][2])#change
                 return redirect('/')
             #if entered wrong password
             else:
@@ -36,22 +34,27 @@ def login():
 
 @app.route('/signup', methods=['post', 'get'])
 def signup():
-    if request.form :
-        msg = ''
+    if request.method == 'POST' :
         name = request.form['name']
         #checking user
         res = check_user(request)
+        print(res)
+        print(len(res))
+        if len(res)!=0:
+            if res[0][0]==name:
+                msg = 'account already exist!'
+                value = request.form['name']
+                return render_template('signup.html', msg=msg, value = value)
+        if len(request.form['password'])<8 and len(request.form['name'])<8 :
+            msg = 'check username and password!'
+            value = request.form['name']
+            return render_template('signup.html', msg=msg, value = value)
         #creating account
-        if len(res)==0:
+        elif len(res)==0 and len(request.form['password'])>=8 and len(request.form['name'])>=8:
             create_usr(request)
             session['logedin']= True
             session['user']=request.form['name']
             return redirect('/')
-        elif res[0][0]==name:
-            msg = 'account already exist!'
-            value = request.form['name']
-            return render_template('signup.html', msg=msg, value = value)
-        
     else:
         return render_template('signup.html')
 
@@ -60,17 +63,20 @@ def homepg():
     if session:
         return render_template('hmpg.html', 
         name_of_user = session['user'],
-        users = onl_users())
+        users = onl_users()
+        #users = chatt())#change
     else:
-        return 'hello <a href="/login">sign in</a>'
+        return render_template('signup.html')
 
-@app.route('/logout', methods=['post'])
+@app.route('/logout', methods=['post',"get"])
 def logout():
     session.pop('logedin')
     session.pop('user')
-    return f'you are loged out sucessfully '
+    return f'you are loged out sucessfully <a href="/"> log in </a>clear'
 
+@app.route('/dummy/<user>')
+def ntg(user=12):
+    return render_template("demopg.html",namee = user)
 
 if __name__=='__main__':
-    app.run(debug=True)
-    app.config['SERVER_NAME']='helo:80'
+    app.run(debug=True,port="80",host="0.0.0.0")
