@@ -1,0 +1,40 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: lightblue;
+}
+
+div.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    border-radius: 6px;
+    height: 233px;
+    padding: 20px;
+    margin: 0px 15%;
+    margin-top: 100px;
+    width: fit-content;
+}
+div.users{
+    display: flex;
+    flex-direction: column;
+}
+div a{
+    text-decoration: none;
+    padding: 5px 30px;
+    margin: 2% 0px;
+    color: black;
+}
+div a:hover{
+    background-color: #f1f3f4;
+    transition: 0.6s ease;
+}
+
+div.chatarea{
+    background-color: #f1f3f4;
+    display: flex;
+    flex-direction: column-reverse;
+}
